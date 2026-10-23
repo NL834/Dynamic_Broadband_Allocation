@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold text-primary">ISP Command Center</h2>
+    <span id="live-health" class="badge bg-white text-primary border border-primary rounded-pill p-3">
+        Router: {{ health }}
+    </span>
+</div>
+
+<div class="card mb-4 p-4 border-0 shadow-sm" style="background-color: #eef4fb;">
+    <div class="row align-items-center">
+        <div class="col-md-2 text-center">
+            <h1 style="font-size: 3rem;"></h1>
+        </div>
+        <div class="col-md-10">
+            <h5 class="fw-bold mb-1">Live Router Performance</h5>
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <small class="text-uppercase text-muted d-block">CPU Usage</small>
+                    <strong class="text-primary fs-3"><span id="live-cpu">{{ router.cpu }}</span>%</strong>
+                </div>
+                <div class="col-md-4">
+                    <small class="text-uppercase text-muted d-block">Model</small>
+                    <strong class="text-dark">{{ router.model }}</strong>
+                </div>
+                <div class="col-md-4">
+                    <small class="text-uppercase text-muted d-block">Firmware</small>
+                    <code class="text-dark fw-bold">{{ router.version }}</code>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function updateStats() {
+        fetch('/api/status')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('live-cpu').innerText = data.cpu;
+                document.getElementById('live-health').innerText = "Router: " + data.health;
+                
+                // Optional: Change color if offline
+                if(data.health === "OFFLINE") {
+                    document.getElementById('live-health').classList.replace('text-primary', 'text-danger');
+                } else {
+                    document.getElementById('live-health').classList.replace('text-danger', 'text-primary');
+                }
+            })
+            .catch(err => console.log("Can't reach the router tap..."));
+    }
+
+    // Run this every 3 seconds
+    setInterval(updateStats, 3000);
+</script>
+
+<div class="card p-4 shadow-sm border-0">
+    <h5 class="fw-bold mb-4">Pending Network Provisions</h5>
+    <table class="table align-middle">
+        <thead><tr class="text-muted small text-uppercase"><th>User</th><th>Speed</th><th>Queue Handle</th><th>Status</th><th>Action</th></tr></thead>
+        <tbody>
+            {% for r in requests %}
+            <tr>
+                <td><strong>{{ r.client_name }}</strong></td>
+                <td><span class="fs-4 fw-bold">{{ r.bandwidth }}</span> Mbps</td>
+                <td><code class="text-primary">{{ r.queue_name }}</code></td>
+                <td>
+                    {% if r.status == 'Active' %}<span class="badge bg-success rounded-pill px-3">ACTIVE</span>
+                    {% elif r.status == 'Pending' %}<span class="badge bg-warning text-dark rounded-pill px-3">PENDING</span>
+                    {% else %}<span class="text-muted small">Catalog</span>{% endif %}
+                </td>
+                <td>
+                    {% if r.status == 'Pending' %}
+                        <a href="/approve/{{ r.id }}" class="btn btn-warning btn-sm rounded-pill px-4 fw-bold">Deploy Policy</a>
+                    {% endif %}
+                    <a href="/delete/{{ r.id }}" class="btn btn-outline-danger btn-sm rounded-pill ms-2">X</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

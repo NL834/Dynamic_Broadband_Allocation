@@ -1,0 +1,1 @@
+Please note that the code attached does not function without the hardware active and connected. This is because if the router is not online, there is no way to allocate any bandwidth, or perform status checks.

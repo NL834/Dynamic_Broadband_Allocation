@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-5 mt-4">
+    <h2 class="fw-bold text-primary">Your Bandwidth Library</h2>
+    <button class="btn btn-primary px-4 shadow-sm fw-bold" data-bs-toggle="modal" data-bs-target="#addModal">
+        + Create New Plan
+    </button>
+</div>
+
+<div class="row g-4"> 
+    {% for p in plans %}
+    <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card h-100 p-4 text-center shadow-sm {% if p.status == 'Active' %}border border-primary border-3{% endif %}" style="border-radius: 25px;">
+            
+            <div class="mb-2 d-flex justify-content-center align-items-center">
+                <span class="text-muted small fw-bold me-2 text-uppercase">{{ p.queue_name }}</span>
+                <button class="btn btn-sm btn-link p-0 text-decoration-none fw-bold" style="font-size: 0.7rem; color: #6c757d;" data-bs-toggle="modal" data-bs-target="#renameModal{{ p.id }}">
+                    (EDIT)
+                </button>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-center my-4">
+                <a href="/decrease/{{ p.id }}" class="btn btn-outline-secondary rounded-circle shadow-sm d-flex align-items-center justify-content-center" style="width:45px; height:45px; font-weight: bold;">-</a>
+                <div class="mx-4">
+                    <h1 class="fw-bold mb-0" style="font-size: 3.5rem;">{{ p.bandwidth }}<small class="fs-4 text-muted">Mbps</small></h1>
+                </div>
+                <a href="/increase/{{ p.id }}" class="btn btn-outline-secondary rounded-circle shadow-sm d-flex align-items-center justify-content-center" style="width:45px; height:45px; font-weight: bold;">+</a>
+            </div>
+            
+            <div class="mt-auto">
+                {% if p.status == 'Active' %}
+                    <div class="bg-success text-white py-3 rounded-pill fw-bold mb-3 shadow-sm">LIVE ON NETWORK</div>
+                {% elif p.status == 'Pending' %}
+                    <div class="bg-warning text-dark py-3 rounded-pill fw-bold mb-3 shadow-sm">WAITING FOR ISP...</div>
+                {% else %}
+                    <a href="/switch/{{ p.id }}" class="btn btn-primary w-100 py-3 rounded-pill fw-bold shadow-sm mb-3">SWITCH TO THIS</a>
+                {% endif %}
+                
+                <a href="/delete/{{ p.id }}" class="text-danger small text-decoration-none fw-bold">Remove Plan</a>
+            </div>
+        </div>
+
+        <div class="modal fade" id="renameModal{{ p.id }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content p-4" style="border-radius: 30px; border: none;">
+                    <h5 class="fw-bold mb-3">Update Plan Name</h5>
+                    <form action="/rename/{{ p.id }}" method="POST">
+                        <input type="text" name="new_name" class="form-control mb-3 rounded-pill p-3 border-2" value="{{ p.queue_name }}" required>
+                        <button class="btn btn-primary w-100 py-3 rounded-pill fw-bold shadow">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="modal fade" id="addModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-4" style="border-radius: 30px; border: none;">
+            <h4 class="fw-bold mb-4 text-primary">New Bandwidth Plan</h4>
+            <form action="/add_new" method="POST">
+                <div class="mb-3">
+                    <label class="small fw-bold text-muted ms-2">Speed (Mbps)</label>
+                    <input type="number" name="bandwidth" class="form-control rounded-pill p-3 border-2" placeholder="e.g. 50" required>
+                </div>
+                <div class="mb-4">
+                    <label class="small fw-bold text-muted ms-2">Plan Name</label>
+                    <input type="text" name="queue_name" class="form-control rounded-pill p-3 border-2" placeholder="e.g. Work or Gaming" required>
+                </div>
+                <button class="btn btn-primary w-100 py-3 rounded-pill fw-bold shadow">Add to My Library</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
