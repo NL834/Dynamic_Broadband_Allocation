@@ -8,3 +8,5 @@ For example, if you wanted to increase your bandwidth today, assuming you have a
 As a result, I designed NetNeuronix - an App driven dynamic allocation ISP service that allows for flexible internet service. 
 
 You would download the app on your phone (in this instance you would access a website) which would then let you see your billing and active plans. 
+
+Please see the documentation folder if you wish to learn more!
