@@ -1,7 +1,1 @@
-#Research
-
-#Implementation
-
-#Testing
-
-#Results
+# Research 
