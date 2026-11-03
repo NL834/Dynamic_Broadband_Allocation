@@ -23,14 +23,31 @@ It converts the identified problem into a straightforward plan of action, outlin
 
 I wanted to develop an MVP capable of showcasing a proof of concept for a networking device to create an on-demand bandwidth provisioning service for home and small business networks and successfully meet the growing demands of modern networks. 
 
-## The goals were simple:
+## Goals
 - To design, implement and test a self managed, user friendly architecture on a CPE that decouples service provisioning from ISP organisations, putting users in control.
 - Address the technical usability and market inertia of the fixed bandwidth model in small business and home networks.
 - have the project finished by a specific deadline
 
 ## Finally the requirements:
 
-Functional:
+### Functional
+- System must separate client and ISP roles
+- Must maintain a consistent session
+- Allows the user to input a bandwidth amount whenever they desire
+- It displays both the clients inactive/active plans
+- ISP should be able to view all their clients information
+- Showcase active queues and pull router information
+
+### Non-Functional
+
+•	Provisioning Latency the system must push the bandwidth policy within a short timeframe. 
+•	The Flask backend should remember the queues or information
+•	credentials must not be stored in plaintext; they must be stored securely using hashing or another encryption method.
+•	The queue name must sanitise any inputs to prevent command injection.
+•	A non-technical client should be able to request an upgrade with minimal effort. 
+•	The system should provide banner messages that serve as acknowledgements
+•	If the MikroTik is unplugged the script with handle the error and display a router offline message.
+
 
 
 
