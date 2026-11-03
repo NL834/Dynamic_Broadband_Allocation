@@ -6,3 +6,27 @@ Instead of going head first intop my own designs, I researched some related topi
 
 This includes quality of service (QoS), traffic engineering, human computer interaction (HCI), customer premises equipment (CPE), software defined networking (SDN), fixed bandwidth allocation and application programming interface (API).
 
+To summarise what I learnt from my research:
+- QoS - The importance of the users experience in networking
+- Traffic Engineering - How traffic actually functions
+- HCI - How GUI's are designed and how they function
+- CPE - The design of your home router and its features
+- SDN - How I was going to develop a program that automates these network configurations
+- Fixed bandwidth allocation - Informed me that this has been a problem ever since BT monopolised the internet upon creation
+
+# Designs
+
+The first step of this phase was to develop the project aims and objectives.
+It converts the identified problem into a straightforward plan of action, outlining what this research aims to accomplish and the specific goals in mind.
+
+As for project aim, I wanted to develop an MVP capable of showcasing a proof of concept for a networking device to create an on-demand bandwidth provisioning service for home and small business networks and successfully meet the growing demands of modern networks. 
+
+The goals were simple:
+- To design, implement and test a self managed, user friendly architecture on a CPE that decouples service provisioning from ISP organisations, putting users in control.
+- Address the technical usability and market inertia of the fixed bandwidth model in small business and home networks.
+- have the project finished by a specific deadline
+
+
+
+
+
