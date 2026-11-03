@@ -16,15 +16,21 @@ To summarise what I learnt from my research:
 
 # Designs
 
-The first step of this phase was to develop the project aims and objectives.
+The first step of this phase was to develop the project aims, objectives, and requirements.
 It converts the identified problem into a straightforward plan of action, outlining what this research aims to accomplish and the specific goals in mind.
 
-As for project aim, I wanted to develop an MVP capable of showcasing a proof of concept for a networking device to create an on-demand bandwidth provisioning service for home and small business networks and successfully meet the growing demands of modern networks. 
+## Project Aim
 
-The goals were simple:
+I wanted to develop an MVP capable of showcasing a proof of concept for a networking device to create an on-demand bandwidth provisioning service for home and small business networks and successfully meet the growing demands of modern networks. 
+
+## The goals were simple:
 - To design, implement and test a self managed, user friendly architecture on a CPE that decouples service provisioning from ISP organisations, putting users in control.
 - Address the technical usability and market inertia of the fixed bandwidth model in small business and home networks.
 - have the project finished by a specific deadline
+
+## Finally the requirements:
+
+Functional:
 
 
 
