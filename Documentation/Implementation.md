@@ -28,7 +28,7 @@ I wanted to develop an MVP capable of showcasing a proof of concept for a networ
 - Address the technical usability and market inertia of the fixed bandwidth model in small business and home networks.
 - have the project finished by a specific deadline
 
-## Finally the requirements:
+## Requirements:
 
 ### Functional
 - System must separate client and ISP roles
