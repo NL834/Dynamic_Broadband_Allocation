@@ -40,13 +40,13 @@ I wanted to develop an MVP capable of showcasing a proof of concept for a networ
 
 ### Non-Functional
 
-•	Provisioning Latency the system must push the bandwidth policy within a short timeframe. 
-•	The Flask backend should remember the queues or information
-•	credentials must not be stored in plaintext; they must be stored securely using hashing or another encryption method.
-•	The queue name must sanitise any inputs to prevent command injection.
-•	A non-technical client should be able to request an upgrade with minimal effort. 
-•	The system should provide banner messages that serve as acknowledgements
-•	If the MikroTik is unplugged the script with handle the error and display a router offline message.
+- Provisioning Latency the system must push the bandwidth policy within a short timeframe. 
+- The Flask backend should remember the queues or information
+- Credentials must not be stored in plaintext; they must be stored securely using hashing or another encryption method.
+- The queue name must sanitise any inputs to prevent command injection.
+- A non-technical client should be able to request an upgrade with minimal effort. 
+- The system should provide banner messages that serve as acknowledgements
+- If the MikroTik is unplugged the script with handle the error and display a router offline message.
 
 
 
