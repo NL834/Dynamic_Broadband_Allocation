@@ -49,6 +49,11 @@ I wanted to develop an MVP capable of showcasing a proof of concept for a networ
 - If the MikroTik is unplugged the script with handle the error and display a router offline message.
 
 
+## Artefact Design
+<img width="898" height="343" alt="image" src="https://github.com/user-attachments/assets/505eaf83-8445-4b8b-afec-d945c34a282b" />
+
+
+
 
 
 
