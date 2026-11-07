@@ -61,6 +61,22 @@ Please see the image below:
 
 This is a network diagram made in Cisco Packet Tracer - a network simulation software.
 
+Here is an explanation of each device:
+- The wired device represents the Raspberry PI - acts as the client for the requests
+- Router - your home CPE (MikroTik Router)
+- PC - My desktop executing the code and acting as the ISP
+
+The desktop would run the code/website and send the clients requests to the 'ISP', this would then be approved and sent to the MikroTik's API via RouterOS. It then executes the new bandwidth queue on the cable associated with the raspberry PI. From this design, we now have a functioning network and product.
+
+The website is coded using flask, as it is low intensive and easy to setup - the perfect software for the average CPE.
+
+
+To break down this process even more, I developed a flowchart to illustrate the process:
+
+<img width="958" height="810" alt="image" src="https://github.com/user-attachments/assets/3de5873e-b5ab-4adc-8c98-ab2c627216e8" />
+
+
+I will not go into too much detail on how the whole algorithm works, but a general summary of each step.
 
 
 
