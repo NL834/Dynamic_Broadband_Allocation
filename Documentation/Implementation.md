@@ -50,10 +50,16 @@ I wanted to develop an MVP capable of showcasing a proof of concept for a networ
 
 
 ## Artefact Design
+
+Now the actual development begins.
+
+Firstly, I wanted to visualise what the network would look like so it would be easier to refer to and I would have a setup in mind.
+
+Please see the image below:
+
 <img width="898" height="343" alt="image" src="https://github.com/user-attachments/assets/505eaf83-8445-4b8b-afec-d945c34a282b" />
 
-
-
+This is a network diagram made in Cisco Packet Tracer - a network simulation software.
 
 
 
